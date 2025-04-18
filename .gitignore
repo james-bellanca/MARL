@@ -1,7 +1,19 @@
 # Virtual Environment
-marlenv/
+~/venvs
+
 
 
 
 # Environment variables file
 .env
+.envrc
+
+
+
+# Files
+.NOTES.md
+__pycache__/
+*.pyc
+
+
+

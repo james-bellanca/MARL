@@ -1,14 +1,14 @@
 """
 Version 0 entry point for the custom GridWorld environment.
 """
-from custom_environment.env.custom_environment import GridWorldEnv
+from custom_environment.env.custom_environment import GridExplorationMaskedEnv
 
 
 def env():
     """
     Factory: returns a new GridWorldEnv instance.
     """
-    return GridWorldEnv()
+    return GridExplorationMaskedEnv()
 
 
 if __name__ == "__main__":

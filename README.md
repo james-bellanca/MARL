@@ -22,6 +22,10 @@ Studying emergent behaviors between intelligent agents in a 2D-grid environment
 
 
 ## Usage
+...
+
+- For animated demo, run: 
+    python demo.py
 
 
 
@@ -34,10 +38,6 @@ Studying emergent behaviors between intelligent agents in a 2D-grid environment
 ## Structure of Environments
 - Cooperative vs. Competitive: The structure of this project is to examine the differences between cooperative and competitive learning styles in a multi-agent environment.
 - For further variation, we break each of these categories down to compare factors such as additional environment complexity (e.g. obstacles, varying cell values), varying learning algorithms (e.g. Q-Learning, SARSA, Deep Learning), or agent interaction.
-
-
-## To Implement
-- In competitive environment, incur a larger penalty to agent X for visiting a cell already visited by another agent Y, vs. one already explored by agent X. (this might not actually be smart)
 
 
 ## Hypothesis?

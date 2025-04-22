@@ -11,9 +11,10 @@
 
 
 # Files
-.NOTES.md
+NOTES.md
 __pycache__/
 *.pyc
+demo.py
 
 
-
+.DS_Store

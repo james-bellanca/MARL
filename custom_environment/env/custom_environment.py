@@ -18,7 +18,7 @@ class GridExplorationMaskedEnv(ParallelEnv):
 
     metadata = {"name": "grid_exploration_masked_v0"}
 
-    def __init__(self, grid_size=(25, 25), num_agents=2, max_steps=100):
+    def __init__(self, grid_size=(10, 10), num_agents=2, max_steps=100):
         self.grid_size = grid_size
         self._num_agents = num_agents
         self.max_steps = max_steps

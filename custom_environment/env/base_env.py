@@ -8,7 +8,7 @@ from pettingzoo import ParallelEnv
 
 class GridExplorationMaskedEnv(ParallelEnv):
     """
-    ParallelEnv where each agent explores a shared grid.
+    A ParallelEnv where each agent explores a shared grid.
     Observations include:
       - `grid`: the full grid state (0=unvisited, >0 = agent_id+1)
       - `action_mask`: which of the 4 moves are valid (up/right/down/left)
@@ -18,7 +18,7 @@ class GridExplorationMaskedEnv(ParallelEnv):
 
     metadata = {"name": "grid_exploration_masked_v0"}
 
-    def __init__(self, grid_size=(10, 10), num_agents=2, max_steps=100):
+    def __init__(self, grid_size=(10,10), num_agents=2, max_steps=100):
         self.grid_size = grid_size
         self._num_agents = num_agents
         self.max_steps = max_steps
@@ -113,15 +113,43 @@ class GridExplorationMaskedEnv(ParallelEnv):
         }
 
     def render(self):
-        """Simple ASCII render of visited cells."""
-        char_map = np.full(self.grid_size, '.', dtype=str)
-        for i in range(self.grid_size[0]):
-            for j in range(self.grid_size[1]):
-                v = self.grid[i, j]
-                if v > 0:
-                    char_map[i, j] = str(v - 1)
-        for row in char_map:
-            print(' '.join(row))
+        """
+        ASCII render with row/column numbers, marking:
+        - [A], [B], … for current agent positions
+        -  0, 1, … for cells they have visited
+        -  . for unvisited cells
+        """
+        H, W = self.grid_size
+
+        # 1) Column header
+        header = "    " + "  ".join(f"{j:2}" for j in range(W))
+        print(header)
+
+        # 2) Each row
+        for i in range(H):
+            # row index
+            row_str = f"{i:2}  "
+            for j in range(W):
+                # is there an agent here?
+                agent_here = None
+                for a in self.agents:
+                    if self.agent_positions[a] == (i, j):
+                        agent_here = a
+                        break
+
+                if agent_here is not None:
+                    # letter based on agent index
+                    ch = chr(ord("A") + self.agent_id(agent_here))
+                    cell = f"[{ch}]"
+                else:
+                    v = self.grid[i, j]
+                    if v > 0:
+                        # visited cell: show agent index (v-1)
+                        cell = f" {v-1} "
+                    else:
+                        cell = " . "
+                row_str += cell + " "
+            print(row_str)
         print()
 
     @functools.lru_cache(maxsize=None)

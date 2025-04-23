@@ -1,7 +1,9 @@
 """
 Version 0 entry point for the custom GridWorld environment.
+
+Displays initial instance of the ParallelEnv GridExplorationMaskedEnv.
 """
-from custom_environment.env.custom_environment import GridExplorationMaskedEnv
+from custom_environment.env.base_env import GridExplorationMaskedEnv
 
 
 def env():

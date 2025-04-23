@@ -8,25 +8,40 @@ Studying emergent behaviors between intelligent agents in a 2D-grid environment
 /MARL           
 ├── README.md           
 ├── requirements.txt
-├── custon-environment/
-│     └──  env/
-│     │     └── custom-environment.py
-│     └── custom-environment-v0.py                
-├── agents/                  
-├── experiments/        
-├── models/             
-├── utils/ 
+├── custom-environment/
+│     ├──  env/
+│     │     ├── base_env.py
+│     │     └── demo1_env.py
+│     └── custom-environment-v0.py                 
+├── demos/
+│     ├──  demo1.py 
+│     ├──  demo2.py
+│     ├──  q_learning_demo.py
+│     ├──  random_learning_demo.py 
 ├── extras/
+│     ├──  env_test.py 
 ├── .envrc
-├── .gitignore    
+├── .gitignore
 
 
 ## Usage
-...
+To get started with this project, follow the steps below.
 
-- For animated demo, run: 
-    python demo.py
+1. Clone the Repository
+First, clone the repository to your local machine:
 
+```bash
+git clone https://github.com/james-bellanca/MARL.git
+cd MARL
+```
+
+2. Install Dependencies
+Create or activate a virtual environment - If you don't know how to do this stop here.
+
+Once venv is activated, run: 
+```bash
+pip install -r requirements.txt
+```
 
 
 ## Notes

@@ -5,24 +5,23 @@ Studying emergent behaviors between intelligent agents in a 2D-grid environment
 
 
 ## Folder Structure
-/MARL           
-├── README.md           
-├── requirements.txt
-├── custom-environment/
-│     ├──  env/
-│     │     ├── base_env.py
-│     │     └── demo1_env.py
-│     └── custom-environment-v0.py                 
-├── demos/
-│     ├──  demo1.py 
-│     ├──  demo2.py
-│     ├──  q_learning_demo.py
-│     ├──  random_learning_demo.py 
-├── extras/
-│     ├──  env_test.py 
-├── .envrc
-├── .gitignore
-
+/MARL  
+├── README.md  
+├── requirements.txt  
+├── custom-environment/  
+│   ├── env/  
+│   │   ├── base_env.py  
+│   │   └── demo1_env.py  
+│   └── custom-environment-v0.py  
+├── demos/  
+│   ├── demo1.py  
+│   ├── demo2.py  
+│   ├── q_learning_demo.py  
+│   ├── random_learning_demo.py  
+├── extras/  
+│   ├── env_test.py  
+├── .envrc  
+├── .gitignore 
 
 ## Usage
 To get started with this project, follow the steps below.

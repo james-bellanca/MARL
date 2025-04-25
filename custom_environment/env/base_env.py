@@ -18,10 +18,11 @@ class GridExplorationMaskedEnv(ParallelEnv):
 
     metadata = {"name": "grid_exploration_masked_v0"}
 
-    def __init__(self, grid_size=(10,10), num_agents=2, max_steps=100):
+    def __init__(self, grid_size=(10,10), num_agents=2, max_steps=100, obs_radius=None, comm_level='none'):
         self.grid_size = grid_size
         self._num_agents = num_agents
         self.max_steps = max_steps
+        self.obs_radius = obs_radius
 
         # agent IDs: "agent_0", "agent_1", ...
         self.possible_agents = [f"agent_{i}" for i in range(self._num_agents)]
@@ -106,9 +107,24 @@ class GridExplorationMaskedEnv(ParallelEnv):
         ], dtype=np.int8)
 
     def _make_observation(self, agent):
-        """Pack the full grid + action mask into a single dict."""
+        full = self.grid.copy()
+        r, c = self.agent_positions[agent]
+
+        if self.obs_radius is None:
+            local = full
+        else:
+            R = self.obs_radius
+            H, W = self.grid_size
+            # start/end indices, clipped to grid
+            r0, r1 = max(0, r-R), min(H, r+R+1)
+            c0, c1 = max(0, c-R), min(W, c+R+1)
+
+            # everything outside [r0:r1, c0:c1] becomes -1
+            local = np.full_like(full, fill_value=-1)
+            local[r0:r1, c0:c1] = full[r0:r1, c0:c1]
+
         return {
-            "grid": self.grid.copy(),
+            "grid": local,
             "action_mask": self._compute_mask(agent)
         }
 
@@ -154,10 +170,19 @@ class GridExplorationMaskedEnv(ParallelEnv):
 
     @functools.lru_cache(maxsize=None)
     def observation_space(self, agent):
+        if self.obs_radius is None:
+            shape = self.grid_size
+        else:
+            # local square of size (2R+1) but clipped at borders
+            R = self.obs_radius
+            max_dim = max(self.grid_size)
+            # we’ll declare the box shape as full grid for simplicity,
+            # or as (2R+1, 2R+1) if you prefer exact local dims.
+            shape = self.grid_size
         return Dict({
-            "grid": Box(low=0,
+            "grid": Box(low=-1,
                         high=self._num_agents,
-                        shape=self.grid_size,
+                        shape=shape,
                         dtype=int),
             "action_mask": MultiBinary(4)
         })

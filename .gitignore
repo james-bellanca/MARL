@@ -17,6 +17,7 @@ __pycache__/
 demo1.py
 demo1_env.py
 tests.py
+partial_obs_demo.py
 
 
 

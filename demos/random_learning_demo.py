@@ -33,4 +33,4 @@ def run_random(steps):
 
 
 if __name__ == "__main__":
-    run_random(steps=25)
+    run_random(steps=40)

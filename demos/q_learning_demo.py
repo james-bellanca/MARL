@@ -81,4 +81,4 @@ def q_learning(episodes=500, α=0.5, γ=0.99, ε=0.2):
     plt.show()
 
 if __name__ == "__main__":
-    q_learning(episodes=5000)
+    q_learning(episodes=10000)

@@ -61,6 +61,7 @@ def main():
     with open(args.output, "w", newline="") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow([
+            "grid_height", "grid_width",
             "obs_radius", "episode",
             "coverage_time", "total_reward", "final_coverage"
         ])
@@ -132,6 +133,7 @@ def main():
             final_coverage = np.count_nonzero(env.grid) / float(S)
 
             writer.writerow([
+                H, W,
                 args.obs_radius, ep,
                 coverage_time, total_reward, final_coverage
             ])

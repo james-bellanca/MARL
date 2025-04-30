@@ -5,6 +5,13 @@ This multi-agent reinforcement learning (MARL) project aims to explore cooperati
 a 2-D grid environment, researching how varying agent observation ranges and communication protocols affect cooperative and competitive behaviors across increasing complexity in grid-world multi-agent reinforcement learning environments.
 
 
+## Table of Contents
+- [Background](#background)
+- [Folder Structure](#folder-structure)
+- [Notes](#notes)
+- [Usage](#usage)
+- [References](#references)
+
 ## Folder Structure
 
 - **MARL**
@@ -30,6 +37,8 @@ a 2-D grid environment, researching how varying agent observation ranges and com
 
 
 ## Notes
+- This project explores how agents with different sensing ranges and communication budgets cooperate to map unknown environments. Insights from these experiments can inform:
+    - Search and Rescue Robotics: 
 - A 2D grid (e.g., 50x50 or 100x100) provides a clear, simple, yet expressive environment where behaviors can emerge over time. Its simplicity helps in isolating factors affecting agent strategies. Over the course of this project we can increase the complexity of the gridpath world to include things like barriers, varying cell values or partially observable states.
 
 ## Usage
@@ -54,7 +63,7 @@ pip install -r requirements.txt
 ```
 
 
-## Refs
+## References
 - https://pettingzoo.farama.org/
 - https://www.kc-ml2.com/posts/blog_MARL#4-multi-agent-grid-world-environments
 - https://proceedings.mlr.press/v139/liu21j/liu21j.pdf?utm_source=chatgpt.com

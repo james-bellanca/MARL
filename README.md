@@ -13,8 +13,7 @@ a 2-D grid environment, researching how varying agent observation ranges and com
 - [References](#references)
 
 ## Folder Structure
-
-- **MARL**
+**MARL**
 - `README.md`
 - `requirements.txt`
 - `custom-environment/`
@@ -29,7 +28,7 @@ a 2-D grid environment, researching how varying agent observation ranges and com
     - `partial_obs_q_train.py`
 - `extras/`
     - `env_test.py`
-- `notebooks/`
+- `base_notebooks/`
     - `notebook_v0.py`
     - `notebook_v1.py`
 - `.envrc`
@@ -37,9 +36,25 @@ a 2-D grid environment, researching how varying agent observation ranges and com
 
 
 ## Notes
-- This project explores how agents with different sensing ranges and communication budgets cooperate to map unknown environments. Insights from these experiments can inform:
-    - Search and Rescue Robotics: 
-- A 2D grid (e.g., 50x50 or 100x100) provides a clear, simple, yet expressive environment where behaviors can emerge over time. Its simplicity helps in isolating factors affecting agent strategies. Over the course of this project we can increase the complexity of the gridpath world to include things like barriers, varying cell values or partially observable states.
+- **1. Introduction**
+    - A 2D grid (e.g., 50x50 or 100x100) provides a clear, simple, yet expressive environment where behaviors can emerge over time. Its simplicity helps in isolating factors affecting agent strategies. Over the course of this project we can increase the complexity of the gridpath world to include things like barriers, varying cell values 
+    or partially observable states.
+    
+- **2. Base Environment**
+    - The first environment we use is a PettingZoo Parallel environment called GridExplorationMaskedEnvironment. This is the most basic environment we work with, containing no obstacles or complexity. The folder base_notebooks/ contains .ipynb files containing plots and graphs describing specific instances of agentic learning in this environment.
+    - Using this environment we first test varying the observation radius of the agents. 
+
+- **3. Obstructed Environment 1**
+
+- **4. Obstructed Environment 2**
+
+- **5. Implications**
+    This project explores how agents with different sensing ranges and communication budgets cooperate to map unknown environments. Insights from these experiments can inform:
+    - **Search & Rescue Robotics**: Designing multi-robot teams that share only critical information when bandwidth is limited and operate safely around dynamic obstacles (e.g. debris, moving victims).  
+    - **Environmental Sensor Networks**: Developing energy-aware protocols where battery-powered sensors decide when to transmit readings vs. conserve power, improving long-term monitoring of wildlife, pollution, or agricultural conditions.  
+    - **Smart Infrastructure & IoT**: Coordinating distributed controllers in buildings, power grids, or traffic systems so they maintain performance under partial observability and intermittent connectivity.  
+    - **Human Teamwork Models**: Providing a quantitative framework for how information bottlenecks affect collective decision-making in emergency response, air-traffic control, or distributed software teams.
+
 
 ## Usage
 To get started with this project, follow the steps below.
@@ -61,6 +76,23 @@ Once venv is activated, run:
 ```bash
 pip install -r requirements.txt
 ```
+
+3. Demos
+
+- Animated Demo
+```bash
+python demos/demo2.py
+```
+
+- Q-Learning and Random Learning in Terminal
+```bash
+python -m demos.q_learning_demo
+python -m demos.random_learning_demo
+```
+
+4. 
+
+
 
 
 ## References
